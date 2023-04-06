@@ -6,11 +6,11 @@ import java.util.List;
 public class FemalePersonData extends PersonData {
 
     private final List<String> NAMES = Arrays.asList("Татьяна", "Вероника",
-            "Ирина", "Людмила", "Мария");
+            "Ирина", "Людмила", "Мария", "Яна");
     private final List<String> SURNAMES = Arrays.asList("Иванова", "Смирнова",
-            "Кузнецова", "Бабанова", "Васильева");
+            "Кузнецова", "Бабанова", "Васильева", "Королёва");
     private final List<String> PATRONYMICS = Arrays.asList("Ивановна", "Алексеевна",
-            "Михайловна", "Григорьевна", "Павловна");
+            "Михайловна", "Григорьевна", "Павловна", "Геннадиевна");
 
     @Override
     public List<String> getNames() {

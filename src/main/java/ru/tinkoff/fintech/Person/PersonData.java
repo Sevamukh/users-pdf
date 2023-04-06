@@ -5,13 +5,14 @@ import java.util.List;
 
 public abstract class PersonData {
     public final List<String> BIRTH_PLACES = Arrays.asList("Москва", "Санкт-Петербург",
-            "Новосибирск", "Черноголовка", "Самара");
+            "Новосибирск", "Ногинск", "Самара", "Омск", "Воронеж");
     public final List<String> COUNTRIES = Arrays.asList("Россия", "Беларусь", "Казахстан");
-    public final List<String> REGIONS = Arrays.asList("Московская", "Ленинградская", "Новосибирская");
+    public final List<String> REGIONS = Arrays.asList("Московская", "Ленинградская", "Новосибирская",
+            "Красноярский край");
     public final List<String> CITIES = Arrays.asList("Москва", "Санкт-Петербург",
             "Новосибирск", "Екатеринбург", "Казань");
     public final List<String> STREETS = Arrays.asList("Центральная", "Молодежная",
-            "Первая", "Садовая", "Лесная");
+            "Первая", "Садовая", "Лесная", "Школьный бульвар");
 
     public abstract List<String> getNames();
     public abstract List<String> getSurnames();

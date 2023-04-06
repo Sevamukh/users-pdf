@@ -1,6 +1,6 @@
 package ru.tinkoff.fintech.Constant;
 
-public class DataConstant {
+public class DataGeneratorConstant {
     public final static int MIN_AGE = 14;
     public final static int MAX_AGE = 70;
     public final static int MIN_POSTAL_CODE = 100000;
