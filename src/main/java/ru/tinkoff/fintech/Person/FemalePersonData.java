@@ -3,6 +3,9 @@ package ru.tinkoff.fintech.Person;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Класс для хранения вариантов женских данных
+ */
 public class FemalePersonData extends PersonData {
 
     private final List<String> NAMES = Arrays.asList("Татьяна", "Вероника",

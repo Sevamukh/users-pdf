@@ -5,6 +5,9 @@ import java.util.List;
 import static ru.tinkoff.fintech.Constant.DataGeneratorConstant.*;
 import static ru.tinkoff.fintech.Utility.RandomData.*;
 
+/**
+ * Класс с методами для получения случайных данных
+ */
 public class PersonDataGenerator {
     private final PersonData personData;
 

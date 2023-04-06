@@ -13,6 +13,9 @@ import java.util.List;
 
 import static ru.tinkoff.fintech.Constant.PdfConstant.*;
 
+/**
+ * Класс с методами для генерации PDF с данными
+ */
 public class PdfCreator {
     private final int peopleNumber;
     private final PersonDataGenerator malePersonDataGenerator;
@@ -20,19 +23,19 @@ public class PdfCreator {
 
     public PdfCreator(int peopleNumber, PersonData malePersonData, PersonData femalePersonData) throws IllegalArgumentException {
         if (peopleNumber > 30 || peopleNumber < 1) {
-            throw new IllegalArgumentException("Количество данных людей выходит за допустимый диапазон");
+            throw new IllegalArgumentException("Количество строк данных людей выходит за допустимый диапазон");
         }
         this.peopleNumber = peopleNumber;
         this.malePersonDataGenerator = new PersonDataGenerator(malePersonData);
         this.femalePersonDataGenerator = new PersonDataGenerator(femalePersonData);
     }
 
-    public PersonDataGenerator getRandomPersonDataGenerator() {
+    private PersonDataGenerator getRandomPersonDataGenerator() {
         return RandomData.getRandomPersonDataGenerator(malePersonDataGenerator, femalePersonDataGenerator);
     }
 
-    public PdfPTable createEmptyPeopleTable() {
-        PdfPTable table = new PdfPTable(columnNumber);
+    private PdfPTable createEmptyPeopleTable() {
+        PdfPTable table = new PdfPTable(colWidths);
         table.setWidthPercentage(100);
         table.addCell(nameHeader);
         table.addCell(surnameHeader);
@@ -51,7 +54,7 @@ public class PdfCreator {
         return table;
     }
 
-    public void fillPersonRow(PdfPTable table) {
+    private void fillPersonRow(PdfPTable table) {
         PersonDataGenerator personDataGenerator = getRandomPersonDataGenerator();
         List<String> birthdateAndAge = personDataGenerator.getRandomBirthdateAndAge();
         table.addCell(personDataGenerator.getRandomName());
@@ -85,6 +88,7 @@ public class PdfCreator {
         }
         document.add(table);
         document.close();
-        System.out.println("Файл создан. Путь: " + System.getProperty("user.dir") + "/" + fileSavePath);
+        System.out.println("Файл создан. Путь: " + System.getProperty("user.dir") + "\\" +
+                fileSavePath.replace('/', '\\'));
     }
 }

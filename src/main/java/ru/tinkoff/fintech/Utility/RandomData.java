@@ -11,6 +11,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Класс со вспомогательными методами для рандромизации данных
+ */
 public class RandomData {
 
     public static int generateRandomInt(int min, int max) {
@@ -21,7 +24,7 @@ public class RandomData {
         return list.get(generateRandomInt(0, list.size()-1));
     }
 
-    public static Date generateRandomDate(Date startDate, Date endDate) {
+    private static Date generateRandomDate(Date startDate, Date endDate) {
         long startMillis = startDate.getTime();
         long endMillis = endDate.getTime();
         long randomMillisSinceEpoch = ThreadLocalRandom.current().nextLong(startMillis, endMillis);
