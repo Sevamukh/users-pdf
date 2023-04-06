@@ -1,4 +1,4 @@
-package ru.tinkoff.fintech.Utility;
+package ru.tinkoff.fintech.Constant;
 
 public class PdfConstant {
 

@@ -1,4 +1,4 @@
-package ru.tinkoff.fintech.Person;
+package ru.tinkoff.fintech.Constant;
 
 public class DataConstant {
     public final static int MIN_AGE = 14;

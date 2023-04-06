@@ -2,7 +2,7 @@ package ru.tinkoff.fintech.Person;
 
 import java.util.List;
 
-import static ru.tinkoff.fintech.Person.DataConstant.*;
+import static ru.tinkoff.fintech.Constant.DataConstant.*;
 import static ru.tinkoff.fintech.Utility.RandomData.*;
 
 public class PersonDataGenerator {

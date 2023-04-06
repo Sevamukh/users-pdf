@@ -12,6 +12,3 @@ target/
 *.iws
 *.iml
 *.ipr
-
-### This HW###
-*.pdf

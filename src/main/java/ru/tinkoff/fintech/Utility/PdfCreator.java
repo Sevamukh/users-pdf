@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.List;
 
-import static ru.tinkoff.fintech.Utility.PdfConstant.*;
+import static ru.tinkoff.fintech.Constant.PdfConstant.*;
 
 public class PdfCreator {
     private final int peopleNumber;
