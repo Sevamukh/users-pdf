@@ -1,6 +1,6 @@
 package ru.tinkoff.fintech.Person;
 
-import java.util.List;
+import ru.tinkoff.fintech.Utility.RandomData;
 
 import static ru.tinkoff.fintech.Constant.DataGeneratorConstant.*;
 import static ru.tinkoff.fintech.Utility.RandomData.*;
@@ -24,8 +24,8 @@ public class PersonDataGenerator {
     public String getRandomPatronymic() {
         return getRandomString(personData.getPatronymics());
     }
-    public List<String> getRandomBirthdateAndAge() {
-        return getRandomBirthDateAndAge(MIN_AGE, MAX_AGE);
+    public String[] getRandomBirthdateAndAge() {
+        return RandomData.getRandomBirthdateAndAge(MIN_AGE, MAX_AGE);
     }
     public String getSex() {
         return personData.getSex();

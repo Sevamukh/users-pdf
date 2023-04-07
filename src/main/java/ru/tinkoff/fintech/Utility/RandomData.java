@@ -8,7 +8,6 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -20,8 +19,8 @@ public class RandomData {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
-    public static String getRandomString(List<String> list) {
-        return list.get(generateRandomInt(0, list.size()-1));
+    public static String getRandomString(String[] str) {
+        return str[generateRandomInt(0, str.length-1)];
     }
 
     private static Date generateRandomDate(Date startDate, Date endDate) {
@@ -31,7 +30,7 @@ public class RandomData {
         return new Date(randomMillisSinceEpoch);
     }
 
-    public static List<String> getRandomBirthDateAndAge(int minAge, int maxAge) {
+    public static String[] getRandomBirthdateAndAge(int minAge, int maxAge) {
         Calendar calendar = Calendar.getInstance();
         Date currentDate = calendar.getTime();
         calendar.add(Calendar.YEAR, -maxAge);
@@ -46,7 +45,7 @@ public class RandomData {
         String strAge = String.valueOf(ChronoUnit.YEARS.between(
                 birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
                 currentDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()));
-        return List.of(strDate, strAge);
+        return new String[] {strDate, strAge};
     }
 
     public static PersonDataGenerator getRandomPersonDataGenerator(PersonDataGenerator malePersonDataGenerator,

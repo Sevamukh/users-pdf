@@ -9,7 +9,6 @@ import ru.tinkoff.fintech.Person.PersonData;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.util.List;
 
 import static ru.tinkoff.fintech.Constant.PdfConstant.*;
 
@@ -62,13 +61,13 @@ public class PdfCreator {
      */
     private void fillPersonRow(PdfPTable table) {
         PersonDataGenerator personDataGenerator = getRandomPersonDataGenerator();
-        List<String> birthdateAndAge = personDataGenerator.getRandomBirthdateAndAge();
+        String[] birthdateAndAge = personDataGenerator.getRandomBirthdateAndAge();
         table.addCell(personDataGenerator.getRandomName());
         table.addCell(personDataGenerator.getRandomSurname());
         table.addCell(personDataGenerator.getRandomPatronymic());
-        table.addCell(birthdateAndAge.get(1));
+        table.addCell(birthdateAndAge[1]);
         table.addCell(personDataGenerator.getSex());
-        table.addCell(birthdateAndAge.get(0));
+        table.addCell(birthdateAndAge[0]);
         table.addCell(personDataGenerator.getRandomBirthPlace());
         table.addCell(personDataGenerator.getRandomPostalCode());
         table.addCell(personDataGenerator.getRandomCountry());

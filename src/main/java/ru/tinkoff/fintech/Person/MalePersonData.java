@@ -1,32 +1,29 @@
 package ru.tinkoff.fintech.Person;
 
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Класс для хранения вариантов мужских данных
  */
 public class MalePersonData extends PersonData {
 
-    private final List<String> NAMES = Arrays.asList("Иван", "Алексей",
-            "Михаил", "Дмитрий", "Павел", "Всеволод");
-    private final List<String> SURNAMES = Arrays.asList("Иванов", "Смирнов",
-            "Кузнецов", "Попов", "Васильев", "Соколов");
-    private final List<String> PATRONYMICS = Arrays.asList("Иванович", "Алексеевич",
-            "Михайлович", "Дмитриевич", "Павлович", "Антонович");
+    private final String[] NAMES = {"Иван", "Алексей",
+            "Михаил", "Дмитрий", "Павел", "Всеволод"};
+    private final String[] SURNAMES = {"Иванов", "Смирнов",
+            "Кузнецов", "Попов", "Васильев", "Соколов"};
+    private final String[] PATRONYMICS = {"Иванович", "Алексеевич",
+            "Михайлович", "Дмитриевич", "Павлович", "Антонович"};
 
     @Override
-    public List<String> getNames() {
+    public String[] getNames() {
         return NAMES;
     }
 
     @Override
-    public List<String> getSurnames() {
+    public String[] getSurnames() {
         return SURNAMES;
     }
 
     @Override
-    public List<String> getPatronymics() {
+    public String[] getPatronymics() {
         return PATRONYMICS;
     }
 
