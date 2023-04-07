@@ -43,7 +43,8 @@ public class RandomData {
         Date birthDate = generateRandomDate(startDate, endDate);
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String strDate = dateFormat.format(birthDate);
-        String strAge = String.valueOf(ChronoUnit.YEARS.between(birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+        String strAge = String.valueOf(ChronoUnit.YEARS.between(
+                birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
                 currentDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()));
         return List.of(strDate, strAge);
     }

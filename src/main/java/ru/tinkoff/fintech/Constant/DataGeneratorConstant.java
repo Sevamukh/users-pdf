@@ -1,5 +1,8 @@
 package ru.tinkoff.fintech.Constant;
 
+/**
+ * Класс с константами, ограничивающими интервалы генерируемых непрерывных величин
+ */
 public class DataGeneratorConstant {
     public final static int MIN_AGE = 14;
     public final static int MAX_AGE = 70;

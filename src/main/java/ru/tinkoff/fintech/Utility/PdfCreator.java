@@ -14,7 +14,7 @@ import java.util.List;
 import static ru.tinkoff.fintech.Constant.PdfConstant.*;
 
 /**
- * Класс с методами для генерации PDF с данными
+ * Класс с методами для генерации PDF с данными людей
  */
 public class PdfCreator {
     private final int peopleNumber;
@@ -34,6 +34,9 @@ public class PdfCreator {
         return RandomData.getRandomPersonDataGenerator(malePersonDataGenerator, femalePersonDataGenerator);
     }
 
+    /**
+     * Метод, создающий новую таблицу с заголовками
+     */
     private PdfPTable createEmptyPeopleTable() {
         PdfPTable table = new PdfPTable(colWidths);
         table.setWidthPercentage(100);
@@ -54,6 +57,9 @@ public class PdfCreator {
         return table;
     }
 
+    /**
+     * Метод, добавляющий в таблицу новую строку со случайными данными
+     */
     private void fillPersonRow(PdfPTable table) {
         PersonDataGenerator personDataGenerator = getRandomPersonDataGenerator();
         List<String> birthdateAndAge = personDataGenerator.getRandomBirthdateAndAge();
@@ -73,6 +79,9 @@ public class PdfCreator {
         table.addCell(personDataGenerator.getRandomFlat());
     }
 
+    /**
+     * Основной метод, создающий PDF файл
+     */
     public void createPeoplePdf(){
         Document document = new Document();
         document.setPageSize(PageSize.A2.rotate());

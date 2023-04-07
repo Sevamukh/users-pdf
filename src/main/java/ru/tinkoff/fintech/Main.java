@@ -13,7 +13,7 @@ public class Main {
         PersonData malePersonData = new MalePersonData();
         PersonData femalePersonData = new FemalePersonData();
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите желаемое количество строк данных от 1 до 30: ");
+        System.out.print("Введите желаемое количество строк данных таблицы, целое число от 1 до 30: ");
         int usersNumber = scanner.nextInt();
 
         PdfCreator pdfCreator = new PdfCreator(usersNumber, malePersonData, femalePersonData);

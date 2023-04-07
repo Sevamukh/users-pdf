@@ -1,5 +1,8 @@
 package ru.tinkoff.fintech.Constant;
 
+/**
+ * Класс с константами, необходимыми для создания PDF файла
+ */
 public class PdfConstant {
 
     public final static String fileSavePath = "target/people data.pdf";
