@@ -5,7 +5,6 @@ import com.lowagie.text.PageSize;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import ru.tinkoff.fintech.Person.PersonDataGenerator;
-import ru.tinkoff.fintech.Person.PersonData;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -17,20 +16,20 @@ import static ru.tinkoff.fintech.Constant.PdfConstant.*;
  */
 public class PdfCreator {
     private final int peopleNumber;
-    private final PersonDataGenerator malePersonDataGenerator;
-    private final PersonDataGenerator femalePersonDataGenerator;
+    private final PersonDataGenerator maleDataGenerator;
+    private final PersonDataGenerator femaleDataGenerator;
 
-    public PdfCreator(int peopleNumber, PersonData malePersonData, PersonData femalePersonData) throws IllegalArgumentException {
+    public PdfCreator(int peopleNumber, PersonDataGenerator maleDataGenerator, PersonDataGenerator femaleDataGenerator) throws IllegalArgumentException {
         if (peopleNumber > 30 || peopleNumber < 1) {
             throw new IllegalArgumentException("Количество строк данных людей выходит за допустимый диапазон");
         }
         this.peopleNumber = peopleNumber;
-        this.malePersonDataGenerator = new PersonDataGenerator(malePersonData);
-        this.femalePersonDataGenerator = new PersonDataGenerator(femalePersonData);
+        this.maleDataGenerator = maleDataGenerator;
+        this.femaleDataGenerator = femaleDataGenerator;
     }
 
     private PersonDataGenerator getRandomPersonDataGenerator() {
-        return RandomData.getRandomPersonDataGenerator(malePersonDataGenerator, femalePersonDataGenerator);
+        return RandomData.getRandomPersonDataGenerator(maleDataGenerator, femaleDataGenerator);
     }
 
     /**

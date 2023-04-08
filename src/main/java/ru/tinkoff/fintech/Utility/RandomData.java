@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Класс со вспомогательными методами для рандромизации данных
+ * Класс со вспомогательными методами для рандомизации данных
  */
 public class RandomData {
 
@@ -48,14 +48,14 @@ public class RandomData {
         return new String[] {strDate, strAge};
     }
 
-    public static PersonDataGenerator getRandomPersonDataGenerator(PersonDataGenerator malePersonDataGenerator,
-                                                                   PersonDataGenerator femalePersonDataGenerator) {
+    public static PersonDataGenerator getRandomPersonDataGenerator(PersonDataGenerator maleDataGenerator,
+                                                                   PersonDataGenerator femaleDataGenerator) {
         int sexChoice = generateRandomInt(1, 2);
         PersonDataGenerator personDataGenerator;
         if (sexChoice == 1) {
-            personDataGenerator = malePersonDataGenerator;
+            personDataGenerator = maleDataGenerator;
         } else {
-            personDataGenerator = femalePersonDataGenerator;
+            personDataGenerator = femaleDataGenerator;
         }
         return personDataGenerator;
     }
