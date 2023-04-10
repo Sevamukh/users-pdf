@@ -95,7 +95,6 @@ public class PdfCreator {
         }
         document.add(table);
         document.close();
-        System.out.println("Файл создан. Путь: " + System.getProperty("user.dir") + "\\" +
-                fileSavePath.replace('/', '\\'));
+        System.out.println("Файл создан. Путь: " + dirPath + fileSeparator + fileSavePath);
     }
 }
