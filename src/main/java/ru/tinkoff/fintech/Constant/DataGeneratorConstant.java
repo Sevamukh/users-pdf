@@ -1,7 +1,7 @@
 package ru.tinkoff.fintech.Constant;
 
 /**
- * Класс с константами, ограничивающими интервалы генерируемых непрерывных величин
+ * Класс с константами, ограничивающими интервалы генерируемых непрерывных величин данных
  */
 public class DataGeneratorConstant {
     public final static int MIN_AGE = 14;

@@ -20,7 +20,7 @@ public class RandomData {
     }
 
     public static String getRandomString(String[] str) {
-        return str[generateRandomInt(0, str.length-1)];
+        return str[generateRandomInt(0, str.length - 1)];
     }
 
     private static Date generateRandomDate(Date startDate, Date endDate) {
@@ -52,11 +52,8 @@ public class RandomData {
                                                                    PersonDataGenerator femaleDataGenerator) {
         int sexChoice = generateRandomInt(1, 2);
         PersonDataGenerator personDataGenerator;
-        if (sexChoice == 1) {
-            personDataGenerator = maleDataGenerator;
-        } else {
-            personDataGenerator = femaleDataGenerator;
-        }
+        if (sexChoice == 1) personDataGenerator = maleDataGenerator;
+        else personDataGenerator = femaleDataGenerator;
         return personDataGenerator;
     }
 

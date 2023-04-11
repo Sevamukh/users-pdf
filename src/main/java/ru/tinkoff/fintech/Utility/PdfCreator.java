@@ -36,22 +36,9 @@ public class PdfCreator {
      * Метод, создающий новую таблицу с заголовками
      */
     private PdfPTable createEmptyPeopleTable() {
-        PdfPTable table = new PdfPTable(colWidths);
+        PdfPTable table = new PdfPTable(COL_WIDTHS);
         table.setWidthPercentage(100);
-        table.addCell(nameHeader);
-        table.addCell(surnameHeader);
-        table.addCell(patronymicHeader);
-        table.addCell(ageHeader);
-        table.addCell(sexHeader);
-        table.addCell(birthdateHeader);
-        table.addCell(birthplaceHeader);
-        table.addCell(postalCodeHeader);
-        table.addCell(countryHeader);
-        table.addCell(regionHeader);
-        table.addCell(cityHeader);
-        table.addCell(streetHeader);
-        table.addCell(houseHeader);
-        table.addCell(flatHeader);
+        for (String header: HEADERS) table.addCell(header);
         return table;
     }
 
@@ -60,10 +47,10 @@ public class PdfCreator {
      */
     private void fillPersonRow(PdfPTable table) {
         PersonDataGenerator personDataGenerator = getRandomPersonDataGenerator();
-        String[] birthdateAndAge = personDataGenerator.getRandomBirthdateAndAge();
         table.addCell(personDataGenerator.getRandomName());
         table.addCell(personDataGenerator.getRandomSurname());
         table.addCell(personDataGenerator.getRandomPatronymic());
+        String[] birthdateAndAge = personDataGenerator.getRandomBirthdateAndAge();
         table.addCell(birthdateAndAge[1]);
         table.addCell(personDataGenerator.getSex());
         table.addCell(birthdateAndAge[0]);
@@ -84,17 +71,15 @@ public class PdfCreator {
         Document document = new Document();
         document.setPageSize(PageSize.A2.rotate());
         try {
-            PdfWriter.getInstance(document, new FileOutputStream(fileSavePath));
+            PdfWriter.getInstance(document, new FileOutputStream(FILE_SAVE_PATH));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
         document.open();
         PdfPTable table = createEmptyPeopleTable();
-        for (int rowIndex = 0; rowIndex < peopleNumber; rowIndex++) {
-            fillPersonRow(table);
-        }
+        for (int rowIndex = 0; rowIndex < peopleNumber; rowIndex++) fillPersonRow(table);
         document.add(table);
         document.close();
-        System.out.println("Файл создан. Путь: " + dirPath + fileSeparator + fileSavePath);
+        System.out.println("Файл создан. Путь: " + DIR_PATH + FILE_SEPARATOR + FILE_SAVE_PATH);
     }
 }
