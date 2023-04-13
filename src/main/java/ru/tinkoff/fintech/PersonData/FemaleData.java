@@ -1,4 +1,4 @@
-package ru.tinkoff.fintech.Person;
+package ru.tinkoff.fintech.PersonData;
 
 /**
  * Класс для хранения вариантов женских данных

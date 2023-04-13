@@ -1,6 +1,6 @@
 package ru.tinkoff.fintech.Utility;
 
-import ru.tinkoff.fintech.Person.PersonDataGenerator;
+import ru.tinkoff.fintech.PersonData.PersonDataGenerator;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

@@ -1,8 +1,8 @@
 package ru.tinkoff.fintech;
 
-import ru.tinkoff.fintech.Person.FemaleData;
-import ru.tinkoff.fintech.Person.MaleData;
-import ru.tinkoff.fintech.Person.PersonDataGenerator;
+import ru.tinkoff.fintech.PersonData.FemaleData;
+import ru.tinkoff.fintech.PersonData.MaleData;
+import ru.tinkoff.fintech.PersonData.PersonDataGenerator;
 import ru.tinkoff.fintech.Utility.PdfCreator;
 
 import java.util.Scanner;

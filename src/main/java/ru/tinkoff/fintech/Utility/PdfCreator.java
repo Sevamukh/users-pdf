@@ -4,7 +4,7 @@ import com.lowagie.text.Document;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
-import ru.tinkoff.fintech.Person.PersonDataGenerator;
+import ru.tinkoff.fintech.PersonData.PersonDataGenerator;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

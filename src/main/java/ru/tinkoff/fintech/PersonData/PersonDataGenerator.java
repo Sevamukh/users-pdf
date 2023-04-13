@@ -1,4 +1,4 @@
-package ru.tinkoff.fintech.Person;
+package ru.tinkoff.fintech.PersonData;
 
 import ru.tinkoff.fintech.Utility.RandomData;
 

@@ -1,4 +1,4 @@
-package ru.tinkoff.fintech.Person;
+package ru.tinkoff.fintech.PersonData;
 
 /**
  * Абстрактный класс для хранения общих для двух полов вариантов данных
