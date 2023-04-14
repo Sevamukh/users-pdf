@@ -40,7 +40,7 @@ public class RandomData {
         Date endDate = calendar.getTime();
 
         Date birthDate = generateRandomDate(startDate, endDate);
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String strDate = dateFormat.format(birthDate);
         String strAge = String.valueOf(ChronoUnit.YEARS.between(
                 birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
