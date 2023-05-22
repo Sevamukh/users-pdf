@@ -1,8 +1,6 @@
 package ru.tinkoff.fintech;
 
-import ru.tinkoff.fintech.PersonData.FemaleDataConstant;
-import ru.tinkoff.fintech.PersonData.MaleDataConstant;
-import ru.tinkoff.fintech.PersonData.PersonDataGenerator;
+import ru.tinkoff.fintech.PersonData.*;
 import ru.tinkoff.fintech.Utility.PdfCreator;
 
 import java.util.Scanner;
@@ -28,9 +26,14 @@ public class Main {
             }
         }
 
-        PdfCreator pdfCreator = new PdfCreator(peopleNumber,
+        PersonDataListGenerator personDataListGenerator = new PersonDataListGenerator(
+                peopleNumber,
                 new PersonDataGenerator(new MaleDataConstant()),
-                new PersonDataGenerator(new FemaleDataConstant()));
+                new PersonDataGenerator(new FemaleDataConstant())
+        );
+        PersonData[] personDataList = personDataListGenerator.createPersonDataList();
+
+        PdfCreator pdfCreator = new PdfCreator(peopleNumber, personDataList);
         pdfCreator.createPeoplePdf();
     }
 }

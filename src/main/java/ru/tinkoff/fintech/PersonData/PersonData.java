@@ -1,5 +1,8 @@
 package ru.tinkoff.fintech.PersonData;
 
+/**
+ * Класс для хранения данных
+ */
 public class PersonData {
     private final String name;
     private final String surname;

@@ -5,7 +5,6 @@ import com.lowagie.text.PageSize;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import ru.tinkoff.fintech.PersonData.PersonData;
-import ru.tinkoff.fintech.PersonData.PersonDataGenerator;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -17,17 +16,11 @@ import static ru.tinkoff.fintech.Constant.PdfConstant.*;
  */
 public class PdfCreator {
     private final int peopleNumber;
-    private final PersonDataGenerator maleDataGenerator;
-    private final PersonDataGenerator femaleDataGenerator;
+    private final PersonData[] personDataList;
 
-    public PdfCreator(int peopleNumber, PersonDataGenerator maleDataGenerator, PersonDataGenerator femaleDataGenerator) {
+    public PdfCreator(int peopleNumber, PersonData[] personDataList) {
         this.peopleNumber = peopleNumber;
-        this.maleDataGenerator = maleDataGenerator;
-        this.femaleDataGenerator = femaleDataGenerator;
-    }
-
-    private PersonDataGenerator getRandomPersonDataGenerator() {
-        return RandomData.getRandomPersonDataGenerator(maleDataGenerator, femaleDataGenerator);
+        this.personDataList = personDataList;
     }
 
     /**
@@ -41,11 +34,9 @@ public class PdfCreator {
     }
 
     /**
-     * Метод, добавляющий в таблицу новую строку со случайными данными
+     * Метод, добавляющий в таблицу новую строку с данными
      */
-    private void fillPersonRow(PdfPTable table) {
-        PersonDataGenerator personDataGenerator = getRandomPersonDataGenerator();
-        PersonData personData = personDataGenerator.getRandomPersonData();
+    private void fillPersonRow(PdfPTable table, PersonData personData) {
         table.addCell(personData.getName());
         table.addCell(personData.getSurname());
         table.addCell(personData.getPatronymic());
@@ -75,7 +66,9 @@ public class PdfCreator {
         }
         document.open();
         PdfPTable table = createEmptyPeopleTable();
-        for (int rowIndex = 0; rowIndex < peopleNumber; rowIndex++) fillPersonRow(table);
+        for (int rowIndex = 0; rowIndex < peopleNumber; rowIndex++) {
+            fillPersonRow(table, personDataList[rowIndex]);
+        }
         document.add(table);
         document.close();
         System.out.println("Файл создан. Путь: " + DIR_PATH + FILE_SEPARATOR + FILE_SAVE_PATH);
