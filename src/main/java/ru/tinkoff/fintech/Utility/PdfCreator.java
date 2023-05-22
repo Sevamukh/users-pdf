@@ -4,6 +4,7 @@ import com.lowagie.text.Document;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+import ru.tinkoff.fintech.PersonData.PersonData;
 import ru.tinkoff.fintech.PersonData.PersonDataGenerator;
 
 import java.io.FileNotFoundException;
@@ -19,10 +20,7 @@ public class PdfCreator {
     private final PersonDataGenerator maleDataGenerator;
     private final PersonDataGenerator femaleDataGenerator;
 
-    public PdfCreator(int peopleNumber, PersonDataGenerator maleDataGenerator, PersonDataGenerator femaleDataGenerator) throws IllegalArgumentException {
-        if (peopleNumber > 30 || peopleNumber < 1) {
-            throw new IllegalArgumentException("Количество строк данных людей выходит за допустимый диапазон");
-        }
+    public PdfCreator(int peopleNumber, PersonDataGenerator maleDataGenerator, PersonDataGenerator femaleDataGenerator) {
         this.peopleNumber = peopleNumber;
         this.maleDataGenerator = maleDataGenerator;
         this.femaleDataGenerator = femaleDataGenerator;
@@ -47,21 +45,21 @@ public class PdfCreator {
      */
     private void fillPersonRow(PdfPTable table) {
         PersonDataGenerator personDataGenerator = getRandomPersonDataGenerator();
-        table.addCell(personDataGenerator.getRandomName());
-        table.addCell(personDataGenerator.getRandomSurname());
-        table.addCell(personDataGenerator.getRandomPatronymic());
-        String[] birthdateAndAge = personDataGenerator.getRandomBirthdateAndAge();
-        table.addCell(birthdateAndAge[1]);
-        table.addCell(personDataGenerator.getSex());
-        table.addCell(birthdateAndAge[0]);
-        table.addCell(personDataGenerator.getRandomBirthPlace());
-        table.addCell(personDataGenerator.getRandomPostalCode());
-        table.addCell(personDataGenerator.getRandomCountry());
-        table.addCell(personDataGenerator.getRandomRegion());
-        table.addCell(personDataGenerator.getRandomCity());
-        table.addCell(personDataGenerator.getRandomStreet());
-        table.addCell(personDataGenerator.getRandomHouse());
-        table.addCell(personDataGenerator.getRandomFlat());
+        PersonData personData = personDataGenerator.getRandomPersonData();
+        table.addCell(personData.getName());
+        table.addCell(personData.getSurname());
+        table.addCell(personData.getPatronymic());
+        table.addCell(personData.getAge());
+        table.addCell(personData.getSex());
+        table.addCell(personData.getBirthdate());
+        table.addCell(personData.getBirthplace());
+        table.addCell(personData.getPostalCode());
+        table.addCell(personData.getCountry());
+        table.addCell(personData.getRegion());
+        table.addCell(personData.getCity());
+        table.addCell(personData.getStreet());
+        table.addCell(personData.getHouse());
+        table.addCell(personData.getFlat());
     }
 
     /**

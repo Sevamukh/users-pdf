@@ -9,44 +9,44 @@ import static ru.tinkoff.fintech.Utility.RandomData.*;
  * Класс с методами для получения случайных данных
  */
 public class PersonDataGenerator {
-    private final PersonData personData;
+    private final PersonDataConstant personDataConstant;
 
-    public PersonDataGenerator(PersonData personData) {
-        this.personData = personData;
+    public PersonDataGenerator(PersonDataConstant personDataConstant) {
+        this.personDataConstant = personDataConstant;
     }
 
     public String getRandomName() {
-        return getRandomString(personData.getNames());
+        return getRandomString(personDataConstant.getNames());
     }
     public String getRandomSurname() {
-        return getRandomString(personData.getSurnames());
+        return getRandomString(personDataConstant.getSurnames());
     }
     public String getRandomPatronymic() {
-        return getRandomString(personData.getPatronymics());
+        return getRandomString(personDataConstant.getPatronymics());
     }
     public String[] getRandomBirthdateAndAge() {
         return RandomData.getRandomBirthdateAndAge(MIN_AGE, MAX_AGE);
     }
     public String getSex() {
-        return personData.getSex();
+        return personDataConstant.getSex();
     }
-    public String getRandomBirthPlace() {
-        return getRandomString(personData.BIRTH_PLACES);
+    public String getRandomBirthplace() {
+        return getRandomString(personDataConstant.BIRTH_PLACES);
     }
     public String getRandomPostalCode() {
         return String.valueOf(generateRandomInt(MIN_POSTAL_CODE, MAX_POSTAL_CODE));
     }
     public String getRandomCountry() {
-        return getRandomString(personData.COUNTRIES);
+        return getRandomString(personDataConstant.COUNTRIES);
     }
     public String getRandomRegion() {
-        return getRandomString(personData.REGIONS);
+        return getRandomString(personDataConstant.REGIONS);
     }
     public String getRandomCity() {
-        return getRandomString(personData.CITIES);
+        return getRandomString(personDataConstant.CITIES);
     }
     public String getRandomStreet() {
-        return getRandomString(personData.STREETS);
+        return getRandomString(personDataConstant.STREETS);
     }
     public String getRandomHouse() {
         return String.valueOf(generateRandomInt(MIN_HOUSE_NUM, MAX_HOUSE_NUM));
@@ -55,4 +55,23 @@ public class PersonDataGenerator {
         return String.valueOf(generateRandomInt(MIN_FLAT_NUM, MAX_FLAT_NUM));
     }
 
+    public PersonData getRandomPersonData() {
+        String[] randomBirthdateAndAge = getRandomBirthdateAndAge();
+        return new PersonData(
+                getRandomName(),
+                getRandomSurname(),
+                getRandomPatronymic(),
+                randomBirthdateAndAge[1],
+                getSex(),
+                randomBirthdateAndAge[0],
+                getRandomBirthplace(),
+                getRandomPostalCode(),
+                getRandomCountry(),
+                getRandomRegion(),
+                getRandomCity(),
+                getRandomStreet(),
+                getRandomHouse(),
+                getRandomFlat()
+        );
+    }
 }
