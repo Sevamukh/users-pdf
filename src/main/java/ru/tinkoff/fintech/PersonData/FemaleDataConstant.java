@@ -3,7 +3,7 @@ package ru.tinkoff.fintech.PersonData;
 /**
  * Класс для хранения вариантов женских данных
  */
-public class FemaleData extends PersonData {
+public class FemaleDataConstant extends PersonDataConstant {
 
     private final String[] NAMES = {"Татьяна", "Вероника",
             "Ирина", "Людмила", "Мария", "Яна"};

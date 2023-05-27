@@ -4,7 +4,7 @@ import com.lowagie.text.Document;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
-import ru.tinkoff.fintech.PersonData.PersonDataGenerator;
+import ru.tinkoff.fintech.PersonData.PersonData;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -16,20 +16,11 @@ import static ru.tinkoff.fintech.Constant.PdfConstant.*;
  */
 public class PdfCreator {
     private final int peopleNumber;
-    private final PersonDataGenerator maleDataGenerator;
-    private final PersonDataGenerator femaleDataGenerator;
+    private final PersonData[] personDataList;
 
-    public PdfCreator(int peopleNumber, PersonDataGenerator maleDataGenerator, PersonDataGenerator femaleDataGenerator) throws IllegalArgumentException {
-        if (peopleNumber > 30 || peopleNumber < 1) {
-            throw new IllegalArgumentException("Количество строк данных людей выходит за допустимый диапазон");
-        }
+    public PdfCreator(int peopleNumber, PersonData[] personDataList) {
         this.peopleNumber = peopleNumber;
-        this.maleDataGenerator = maleDataGenerator;
-        this.femaleDataGenerator = femaleDataGenerator;
-    }
-
-    private PersonDataGenerator getRandomPersonDataGenerator() {
-        return RandomData.getRandomPersonDataGenerator(maleDataGenerator, femaleDataGenerator);
+        this.personDataList = personDataList;
     }
 
     /**
@@ -43,25 +34,23 @@ public class PdfCreator {
     }
 
     /**
-     * Метод, добавляющий в таблицу новую строку со случайными данными
+     * Метод, добавляющий в таблицу новую строку с данными
      */
-    private void fillPersonRow(PdfPTable table) {
-        PersonDataGenerator personDataGenerator = getRandomPersonDataGenerator();
-        table.addCell(personDataGenerator.getRandomName());
-        table.addCell(personDataGenerator.getRandomSurname());
-        table.addCell(personDataGenerator.getRandomPatronymic());
-        String[] birthdateAndAge = personDataGenerator.getRandomBirthdateAndAge();
-        table.addCell(birthdateAndAge[1]);
-        table.addCell(personDataGenerator.getSex());
-        table.addCell(birthdateAndAge[0]);
-        table.addCell(personDataGenerator.getRandomBirthPlace());
-        table.addCell(personDataGenerator.getRandomPostalCode());
-        table.addCell(personDataGenerator.getRandomCountry());
-        table.addCell(personDataGenerator.getRandomRegion());
-        table.addCell(personDataGenerator.getRandomCity());
-        table.addCell(personDataGenerator.getRandomStreet());
-        table.addCell(personDataGenerator.getRandomHouse());
-        table.addCell(personDataGenerator.getRandomFlat());
+    private void fillPersonRow(PdfPTable table, PersonData personData) {
+        table.addCell(personData.getName());
+        table.addCell(personData.getSurname());
+        table.addCell(personData.getPatronymic());
+        table.addCell(personData.getAge());
+        table.addCell(personData.getSex());
+        table.addCell(personData.getBirthdate());
+        table.addCell(personData.getBirthplace());
+        table.addCell(personData.getPostalCode());
+        table.addCell(personData.getCountry());
+        table.addCell(personData.getRegion());
+        table.addCell(personData.getCity());
+        table.addCell(personData.getStreet());
+        table.addCell(personData.getHouse());
+        table.addCell(personData.getFlat());
     }
 
     /**
@@ -77,7 +66,9 @@ public class PdfCreator {
         }
         document.open();
         PdfPTable table = createEmptyPeopleTable();
-        for (int rowIndex = 0; rowIndex < peopleNumber; rowIndex++) fillPersonRow(table);
+        for (int rowIndex = 0; rowIndex < peopleNumber; rowIndex++) {
+            fillPersonRow(table, personDataList[rowIndex]);
+        }
         document.add(table);
         document.close();
         System.out.println("Файл создан. Путь: " + DIR_PATH + FILE_SEPARATOR + FILE_SAVE_PATH);

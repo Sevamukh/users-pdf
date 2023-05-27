@@ -1,21 +1,97 @@
 package ru.tinkoff.fintech.PersonData;
 
 /**
- * Абстрактный класс для хранения общих для двух полов вариантов данных
+ * Класс для хранения данных
  */
-public abstract class PersonData {
-    public final String[] BIRTH_PLACES = {"Москва", "Санкт-Петербург",
-            "Новосибирск", "Ногинск", "Самара", "Омск", "Воронеж"};
-    public final String[] COUNTRIES = {"Россия", "Беларусь", "Казахстан"};
-    public final String[] REGIONS = {"Московская", "Ленинградская", "Новосибирская",
-            "Красноярский край"};
-    public final String[] CITIES = {"Москва", "Санкт-Петербург",
-            "Новосибирск", "Екатеринбург", "Казань"};
-    public final String[] STREETS = {"Центральная", "Молодежная",
-            "Первая", "Садовая", "Лесная", "Школьный бульвар"};
+public class PersonData {
+    private final String name;
+    private final String surname;
+    private final String patronymic;
+    private final String age;
+    private final String sex;
+    private final String birthdate;
+    private final String birthplace;
+    private final String postalCode;
+    private final String country;
+    private final String region;
+    private final String city;
+    private final String street;
+    private final String house;
+    private final String flat;
 
-    public abstract String[] getNames();
-    public abstract String[] getSurnames();
-    public abstract String[] getPatronymics();
-    public abstract String getSex();
+    public PersonData(String name, String surname, String patronymic,
+                      String age, String sex, String birthdate, String birthplace,
+                      String postalCode, String country, String region,
+                      String city, String street, String house, String flat) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.age = age;
+        this.sex = sex;
+        this.birthdate = birthdate;
+        this.birthplace = birthplace;
+        this.postalCode = postalCode;
+        this.country = country;
+        this.region = region;
+        this.city = city;
+        this.street = street;
+        this.house = house;
+        this.flat = flat;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getPatronymic() {
+        return patronymic;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public String getBirthdate() {
+        return birthdate;
+    }
+
+    public String getBirthplace() {
+        return birthplace;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getHouse() {
+        return house;
+    }
+
+    public String getFlat() {
+        return flat;
+    }
 }
